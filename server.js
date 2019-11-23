@@ -35,3 +35,14 @@ function cycleTweet(){
 		}
 	})
 }
+app.set('port',80);
+app.get('/',function(req,res){
+  res.send('Hello World')
+})
+
+app.listen(app.get('port'),function(){
+  console.log("Node testapp is runnning at localhost:" + app.get('port'))
+})
+app.get('/bye',function(req,res){
+  res.send('さよなら')
+})
