@@ -6,10 +6,10 @@ var CronJob = require("cron").CronJob
 var app = express()
 
 var twitter= new  Twitter({
-  consumer_key:'zMsBbF55dsMgBgI8NczgWaauT',
-  consumer_secret:'1f0u7oJ3mnRgL9W0RMUzltO4MLAMtva1HagnCYItOLoKustIaJ',
-  access_token_key:'717125061644124160-1qaIvhLZhO8dxcBMKCDrLPJixf65gmA',
-  access_token_secret:'vS66YeB5Dnd7E2Iw2zdkKg14TvcF0KLBT8U2yiS3rVK9R'
+  consumer_key:process.env['CONSUMER_KEY'],
+  consumer_secret:process.env['CONSUMER_SECRET'],
+  access_token_key:process.env['ACCESS_TOKEN_KEY'],
+  access_token_secret:process.env['ACCESS_TOKEN_SECRET']
 })
 
 var cronTime='0 25 * * * *'
@@ -35,14 +35,3 @@ function cycleTweet(){
 		}
 	})
 }
-app.set('port',80);
-app.get('/',function(req,res){
-  res.send('Hello World')
-})
-
-app.listen(app.get('port'),function(){
-  console.log("Node testapp is runnning at localhost:" + app.get('port'))
-})
-app.get('/bye',function(req,res){
-  res.send('さよなら')
-})
